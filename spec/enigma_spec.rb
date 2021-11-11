@@ -13,10 +13,16 @@ RSpec.describe Enigma do
 
   it 'can turn a message into an array of lower case characters' do
     enigma = Enigma.new
-    message = 'Hello World'
-    expected = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+    message_1 = 'Hello*World'
+    message_2 = 'Oh no!'
+    message_3 = "My cat's"
+    expected_1 = ['h', 'e', 'l', 'l', 'o', '*', 'w', 'o', 'r', 'l', 'd']
+    expected_2 = ['o', 'h', ' ', 'n', 'o', '!']
+    expected_3 = ["m", "y", " ", "c", "a", "t", "'", "s"]
 
-    expect(enigma.message_array(message)).to eq(expected)
+    expect(enigma.message_array(message_1)).to eq(expected_1)
+    expect(enigma.message_array(message_2)).to eq(expected_2)
+    expect(enigma.message_array(message_3)).to eq(expected_3)
   end
 
   xit 'can encrypt a message with a given key and date' do
