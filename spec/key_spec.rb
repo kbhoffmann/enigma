@@ -17,9 +17,10 @@ RSpec.describe Key do
     expect(key.generate.length).to eq(5)
   end
 
-  xit 'can separate random number array into 4 sets of nums' do
+  it 'can separate random number array into 4 sets of nums' do
     key = Key.new
 
-    expect(key.generate).to
+    expect(key.separate_sets).to be_an(Array)
+    expect(key.separate_sets.length).to eq(4)
   end
 end
