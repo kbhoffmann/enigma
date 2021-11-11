@@ -13,4 +13,15 @@ class Key
     keys
   end
   #=>[[5, 8], [8, 4], [4, 6], [6, 1]]
+
+  def create_keys_hash
+    hash = Hash.new { |hash, key| hash[key] = [] }
+    ('A'..'D').each do |letter|
+        separate_sets.each do |set|
+          hash[letter] = set
+        end
+    end
+    hash
+  end
+  #=> {"A"=>[7, 7], "B"=>[1, 2], "C"=>[10, 3], "D"=>[3, 0]}
 end
