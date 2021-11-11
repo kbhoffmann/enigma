@@ -32,6 +32,17 @@ RSpec.describe Enigma do
     expect(enigma.message_array(message_3)).to eq(expected_3)
   end
 
+  it 'can check if a message character is in the characters set' do
+    enigma = Enigma.new
+
+    expect(enigma.check_character('a')).to be(true)
+    expect(enigma.check_character('m')).to be(true)
+    expect(enigma.check_character(" ")).to be(true)
+    expect(enigma.check_character("!")).to be(false)
+    expect(enigma.check_character(",")).to be(false)
+    expect(enigma.check_character("#")).to be(false)
+  end
+
 
   xit 'can encrypt a message with a given key and date' do
     enigma = Enigma.new
