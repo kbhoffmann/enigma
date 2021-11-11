@@ -1,2 +1,6 @@
 class Offsets
-end 
+
+  def square(date)
+    date ** 2
+  end
+end
