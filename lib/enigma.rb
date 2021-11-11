@@ -9,16 +9,10 @@ class Enigma
   #optional date = ARGV3
   #decrypted message = ARGV3
 
+  def character_set
+    ("a".."z").to_a << " "
+  end
 
-#def character_set
-#  ("a".."z").to_a << " "
-#end
-
-#need to turn message into an array of characters
-#def turn message_into_array
-  #message.to_a
-#end
-#=> ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
   def message_array(message)
     message.downcase.split("")
   end
