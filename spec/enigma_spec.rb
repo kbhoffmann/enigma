@@ -11,6 +11,13 @@ RSpec.describe Enigma do
     expect(enigma).to be_an_instance_of(Enigma)
   end
 
+  it 'can create a character set of lower case letters and a space' do
+    enigma = Enigma.new
+
+    expect(enigma.character_set).to be_an(Array)
+    expect(enigma.character_set.length).to eq(27)
+  end
+
   it 'can turn a message into an array of lower case characters' do
     enigma = Enigma.new
     message_1 = 'Hello*World'
@@ -24,6 +31,7 @@ RSpec.describe Enigma do
     expect(enigma.message_array(message_2)).to eq(expected_2)
     expect(enigma.message_array(message_3)).to eq(expected_3)
   end
+
 
   xit 'can encrypt a message with a given key and date' do
     enigma = Enigma.new
