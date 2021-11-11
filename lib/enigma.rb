@@ -2,8 +2,39 @@
 #require 'decrypt.rb'
 
 class Enigma
+  #message to encrypt = ARGV0
   #message_file = File.open(ARGV[0], "r")
+  #character set - initialize with this??
+  #optional key = ARGV2
+  #optional date = ARGV3
+  #decrypted message = ARGV3
+
+
+#def character_set
+#  ("a".."z").to_a << " "
+#end
+
+#need to turn message into an array of characters
+#def turn message_into_array
+  #message.to_a
+#end
+#=> ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+  def message_array(message)
+    message.downcase.split("")
+  end
+
 end
+
+#need to check if each message character is in character_set
+#if true ->shift, if false ->use character as is
+#decrypted_message << put new character into
+
+# def shift
+#   character_set.rotate(offset + key)
+#   #.pop or .push
+# end
+#===>new decrypted character
+
 
 #to read a message to encrypt
 #message_data = message_file.read
