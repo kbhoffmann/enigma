@@ -8,6 +8,7 @@ class Enigma
   #optional key = ARGV2
   #optional date = ARGV3
   #decrypted message = ARGV3
+  
 
   def character_set
     ("a".."z").to_a << " "
