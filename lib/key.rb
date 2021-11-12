@@ -1,7 +1,7 @@
 class Key
 
   def generate
-    5.times.map {rand(0..10)}
+    5.times.map {rand(0..9)}
   end
   #=> [0, 4, 0, 8, 1]
 
@@ -15,19 +15,19 @@ class Key
   #=>[[5, 8], [8, 4], [4, 6], [6, 1]]
 
 
-#want 
+#want
 #A => 58,
 #B => 84,
 #c => 46
 #D => 61
-  def create_keys_hash
+  def keys_hash
     hash = Hash.new { |hash, key| hash[key] = [] }
     ('A'..'D').each do |letter|
         separate_sets.each do |set|
-          hash[letter] = (set[0] + set[1])
+          hash[letter] = set.join.to_i
         end
     end
     hash
   end
-  #=> {"A"=>14, "B"=>15, "C"=>8, "D"=>9}
+  #=>{"A"=>77, "B"=>74, "C"=>12, "D"=>62}
 end
