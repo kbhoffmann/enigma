@@ -43,6 +43,28 @@ RSpec.describe Enigma do
     expect(enigma.check_character("#")).to be(false)
   end
 
+  xit 'can shift characters according to shift type' do
+    enigma = Enigma.new
+
+    type_a = 3
+    type_b = 27
+    type_c = 73
+    type_d = 20
+    expect(enigma.shift("h", type_a)).to eq("k")
+    expect(enigma.shift("e", type_b)).to eq("e")
+    expect(enigma.shift("l", type_c)).to eq("d")
+    expect(enigma.shift("l", type_d)).to eq("e")
+    expect(enigma.shift("o", type_a)).to eq("r")
+    expect(enigma.shift(" ", type_b)).to eq(" ")
+    expect(enigma.shift("w", type_c)).to eq("o")
+    expect(enigma.shift("o", type_d)).to eq("h")
+    expect(enigma.shift("r", type_a)).to eq("u")
+    expect(enigma.shift("l", type_b)).to eq("l")
+    expect(enigma.shift("d", type_c)).to eq("w")
+    #"!" would  not shift since its not in character_set
+    # expect(enigma.shift("d", type_d)).to eq("!")
+  end
+
 
   xit 'can encrypt a message with a given key and date' do
     enigma = Enigma.new
