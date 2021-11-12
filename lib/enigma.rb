@@ -14,6 +14,7 @@ class Enigma
     ("a".."z").to_a << " "
   end
 
+
   def message_array(message)
     message.downcase.split("")
   end
@@ -22,6 +23,17 @@ class Enigma
     character_set.include?(character)
   end
 
+  #try w/ rotate.pop??
+  def encrypted_letter(letter, shift_type)
+    index = character_set.index(letter)
+    shift = (index + shift_type) % (character_set.length)
+    character_set[shift]
+  end
+
+  def encrypted_message
+
+  end
+end
   #if check_character = true
   #check index of character
   #if char_index = 0 || every 4th char from 0
@@ -36,7 +48,7 @@ class Enigma
   #if char_index = 3 || every 4th char from 3
     #shift D then .pop or .shift
     #encrypted_message << new_character
-end
+
 
 #if check_character false, new_character = character
 
