@@ -8,7 +8,7 @@ class Enigma
   #optional key = ARGV2
   #optional date = ARGV3
   #decrypted message = ARGV3
-  
+
 
   def character_set
     ("a".."z").to_a << " "
@@ -22,11 +22,23 @@ class Enigma
     character_set.include?(character)
   end
 
+  #if check_character = true
+  #check index of character
+  #if char_index = 0 || every 4th char from 0
+    #shift A then .pop or .shift
+    #encrypted_message << new_character
+  #if char_index = 1 || every 4th char from 1
+    #shift B then .pop or .shift
+    #encrypted_message << new_character
+  #if char_index = 2 || every 4th char from 2
+    #shift C then .pop or .shift
+    #encrypted_message << new_character
+  #if char_index = 3 || every 4th char from 3
+    #shift D then .pop or .shift
+    #encrypted_message << new_character
 end
 
-#If check_character true, SHIFT
 #if check_character false, new_character = character
-#decrypted_message << put new character into
 
 #different shift every 4th character
 #if character_set character is at index 0,4,8,12... use A shift
