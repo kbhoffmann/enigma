@@ -27,7 +27,7 @@ RSpec.describe Key do
   it 'can create a hash of keys A thru D with sep. sets as values' do
     key = Key.new
 
-    expect(key.create_keys_hash).to be_a(Hash)
-    expect(key.create_keys_hash.count).to eq(4)
+    expect(key.keys_hash).to be_a(Hash)
+    expect(key.keys_hash.count).to eq(4)
   end
 end
