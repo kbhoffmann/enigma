@@ -18,10 +18,10 @@ class Key
     hash = Hash.new { |hash, key| hash[key] = [] }
     ('A'..'D').each do |letter|
         separate_sets.each do |set|
-          hash[letter] = set
+          hash[letter] = (set[0] + set[1])
         end
     end
     hash
   end
-  #=> {"A"=>[7, 7], "B"=>[1, 2], "C"=>[10, 3], "D"=>[3, 0]}
+  #=> {"A"=>14, "B"=>15, "C"=>8, "D"=>9}
 end
