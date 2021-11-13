@@ -28,11 +28,11 @@ class Encrypt
     shift_hash
   end
 
-  def encrypted_letter(letter, shift_type)
+  def encrypted_letter
     new_characters = {}
     assign_shift_type.map do |type, letters|
       letters.map do |letter|
-        if character_set.include?(letter)
+        if @character_set.include?(letter)
           (new_characters[type] ||= []) << shifted_letters[type][letter]
         else
         (new_characters[type] ||= []) << letter
@@ -42,12 +42,18 @@ class Encrypt
     new_characters
   end
 
-  
   def shifted_letters
     new_letters = {}
     @shift_types.each do |type|
-      new_letters[type] =
-    # index = character_set.index(letter)
-    @character_set.zip(@character_set.rotate(total_shift[type])) % (@character_set.length)
+      new_letters[type] = @character_set.zip(@character_set.rotate(total_shift(@date)[type] % (@character_set.length))).to_h
+    end
+    new_letters
+  end
+
+  def translate_message
+    encrypted_letter.values.reduce(&:zip).join
+    # encrypted_letter.values.reduce do |letter|
+    #   letter.zip.join
+    # end
   end
 end
