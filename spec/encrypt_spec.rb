@@ -39,14 +39,23 @@ it 'can take a date as an optional argument' do
   expect(encrypt.date).to eq(40895)
 end
 
-xit 'can create a character set of lower case letters and a space' do
+it 'has a character set of lower case letters and a space' do
   message = "hello world!"
-  key = 2715
-  date = 40895
+  key = '2715'
+  date = '40895'
   encrypt = Encrypt.new(message, key, date)
 
   expect(encrypt.character_set).to be_an(Array)
   expect(encrypt.character_set.length).to eq(27)
+end
+
+it 'has a list of 4 shift types' do
+  message = "hello world!"
+  key = '2715'
+  date = '40895'
+  encrypt = Encrypt.new(message, key, date)
+
+  expect(encrypt.shift_types).to eq(["A", "B", "C", "D"])
 end
 
 xit 'can turn a message into an array of lower case characters' do
