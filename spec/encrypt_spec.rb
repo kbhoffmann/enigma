@@ -105,9 +105,18 @@ RSpec.describe Encrypt do
     expect(encrypt.encrypted_letter.length).to eq(4)
     expect(encrypt.encrypted_letter.values.flatten.length).to eq(message.length)
   end
+
+  it 'can combine the encrypted_letters into an encrypted_message' do 
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
+
+   expect(encrypt.encrypted_message).to eq('keder ohulw!')
+   expect(encrypt.encrypted_message.length).to eq(message.length)
+ end
 end
 
-# expect(encrypt.translate_message).to eq('keder ohulw!')
 
 # xit 'can check if a message character is in the characters set' do
 #   message = "hello world!"
