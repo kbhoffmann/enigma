@@ -1,12 +1,30 @@
-it 'can create a character set of lower case letters and a space' do
-  encrypt = Encrypt.new
+require './lib/encrypt'
+require 'pry'
+
+RSpec.describe Encrypt do
+
+it '' do
+  message = "hello world!"
+  encrypt = Encrypt.new(message)
+
+  expect(encrypt.assign_shift_type).to eq(0)
+end
+
+xit 'can create a character set of lower case letters and a space' do
+  message = "hello world!"
+  key = 2715
+  date = 40895
+  encrypt = Encrypt.new(message, key, date)
 
   expect(encrypt.character_set).to be_an(Array)
   expect(encrypt.character_set.length).to eq(27)
 end
 
-it 'can turn a message into an array of lower case characters' do
-  encrypt = Encrypt.new
+xit 'can turn a message into an array of lower case characters' do
+  message = "hello world!"
+  key = 2715
+  date = 40895
+  encrypt = Encrypt.new(message, key, date)
   message_1 = 'Hello*World'
   message_2 = 'Oh no!'
   message_3 = "My cat's"
@@ -19,7 +37,10 @@ it 'can turn a message into an array of lower case characters' do
   expect(encrypt.message_array(message_3)).to eq(expected_3)
 end
 
-it 'can check if a message character is in the characters set' do
+xit 'can check if a message character is in the characters set' do
+  message = "hello world!"
+  key = 2715
+  date = 40895
   encrypt = Encrypt.new
 
   expect(encrypt.check_character('a')).to be(true)
@@ -30,7 +51,10 @@ it 'can check if a message character is in the characters set' do
   expect(encrypt.check_character("#")).to be(false)
 end
 
-it 'can determine shift type of letter in message array' do
+xit 'can determine shift type of letter in message array' do
+  message = "hello world!"
+  key = 2715
+  date = 40895
   encrypt = Encrypt.new
 
   message_array_1 = ['h', 'e', 'l', 'l', 'o']
@@ -44,9 +68,12 @@ it 'can determine shift type of letter in message array' do
 end
 
 it 'can shift characters according to shift type' do
-  encrypt = Encrypt.new
+  message = "hello world!"
+  key = 2715
+  date = 40895
+  encrypt = Encrypt.new(message)
 
-  type_a = 3
+  type_a = 3  #=>offset + key
   type_b = 27
   type_c = 73
   type_d = 20
@@ -63,4 +90,5 @@ it 'can shift characters according to shift type' do
   expect(encrypt.encrypted_letter("d", type_c)).to eq("w")
   #"!" would  not shift since its not in character_set
   # expect(encrypt.shift("d", type_d)).to eq("!")
+  end
 end
