@@ -62,7 +62,7 @@ class Encrypt
     translated_characters
   end
 
-  def translate_message
+  def encrypted_message
     encrypted_letter.values.reduce(&:zip).join
     # encrypted_letter.values.reduce do |letter|
     #   letter.zip.join
