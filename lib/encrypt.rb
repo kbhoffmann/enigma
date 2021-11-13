@@ -1,5 +1,5 @@
 require 'date'
-require_relative '../modules/keyable'
+require_relative '../modules/shiftable'
 
 class Encrypt
   include Shiftable
