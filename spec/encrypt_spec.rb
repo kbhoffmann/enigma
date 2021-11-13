@@ -2,93 +2,105 @@ require './lib/encrypt'
 require 'pry'
 
 RSpec.describe Encrypt do
+  it 'exists' do
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
 
-it 'exists' do
-  message = "hello world!"
-  key = '02715'
-  date = '40895'
-  encrypt = Encrypt.new(message, key, date)
+    expect(encrypt).to be_an_instance_of(Encrypt)
+  end
 
-  expect(encrypt).to be_an_instance_of(Encrypt)
-end
+  it 'has a message' do
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
 
-it 'has a message' do
-  message = "hello world!"
-  key = '02715'
-  date = '40895'
-  encrypt = Encrypt.new(message, key, date)
+    expect(encrypt.message).to eq("hello world!")
+  end
 
-  expect(encrypt.message).to eq("hello world!")
-end
+  it 'can take a key as an optional argument' do
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
 
-it 'can take a key as an optional argument' do
-  message = "hello world!"
-  key = '02715'
-  date = '40895'
-  encrypt = Encrypt.new(message, key, date)
+    expect(encrypt.key).to eq('02715')
+  end
 
-  expect(encrypt.key).to eq('02715')
-end
+  it 'can take a date as an optional argument' do
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
 
-it 'can take a date as an optional argument' do
-  message = "hello world!"
-  key = '02715'
-  date = '40895'
-  encrypt = Encrypt.new(message, key, date)
+    expect(encrypt.date).to eq(40895)
+  end
 
-  expect(encrypt.date).to eq(40895)
-end
+  it 'has a character set of lower case letters and a space' do
+    message = "hello world!"
+    key = '2715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
 
-it 'has a character set of lower case letters and a space' do
-  message = "hello world!"
-  key = '2715'
-  date = '40895'
-  encrypt = Encrypt.new(message, key, date)
+    expect(encrypt.character_set).to be_an(Array)
+    expect(encrypt.character_set.length).to eq(27)
+  end
 
-  expect(encrypt.character_set).to be_an(Array)
-  expect(encrypt.character_set.length).to eq(27)
-end
+  it 'has a list of 4 shift types' do
+    message = "hello world!"
+    key = '2715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
 
-it 'has a list of 4 shift types' do
-  message = "hello world!"
-  key = '2715'
-  date = '40895'
-  encrypt = Encrypt.new(message, key, date)
+    expect(encrypt.shift_types).to eq(["A", "B", "C", "D"])
+  end
 
-  expect(encrypt.shift_types).to eq(["A", "B", "C", "D"])
-end
+  it 'can turn a message into an array of lower case characters' do
+    message = "hello world!"
+    key = '2715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
+    message_1 = 'Hello*World'
+    message_2 = 'Oh no!'
+    message_3 = "My cat's"
+    expected_1 = ['h', 'e', 'l', 'l', 'o', '*', 'w', 'o', 'r', 'l', 'd']
+    expected_2 = ['o', 'h', ' ', 'n', 'o', '!']
+    expected_3 = ["m", "y", " ", "c", "a", "t", "'", "s"]
 
-xit 'can turn a message into an array of lower case characters' do
-  message = "hello world!"
-  key = 2715
-  date = 40895
-  encrypt = Encrypt.new(message, key, date)
-  message_1 = 'Hello*World'
-  message_2 = 'Oh no!'
-  message_3 = "My cat's"
-  expected_1 = ['h', 'e', 'l', 'l', 'o', '*', 'w', 'o', 'r', 'l', 'd']
-  expected_2 = ['o', 'h', ' ', 'n', 'o', '!']
-  expected_3 = ["m", "y", " ", "c", "a", "t", "'", "s"]
+    expect(encrypt.message_array(message_1)).to eq(expected_1)
+    expect(encrypt.message_array(message_2)).to eq(expected_2)
+    expect(encrypt.message_array(message_3)).to eq(expected_3)
+  end
 
-  expect(encrypt.message_array(message_1)).to eq(expected_1)
-  expect(encrypt.message_array(message_2)).to eq(expected_2)
-  expect(encrypt.message_array(message_3)).to eq(expected_3)
-end
+  it 'can assign the shift type to each character' do
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
+    expected = {"A"=>["h", "o", "r"], "B"=>["e", " ", "l"], "C"=>["l", "w", "d"], "D"=>["l", "o", "!"]}
 
-xit 'can check if a message character is in the characters set' do
-  message = "hello world!"
-  key = 2715
-  date = 40895
-  encrypt = Encrypt.new
-
-  expect(encrypt.check_character('a')).to be(true)
-  expect(encrypt.check_character('m')).to be(true)
-  expect(encrypt.check_character(" ")).to be(true)
-  expect(encrypt.check_character("!")).to be(false)
-  expect(encrypt.check_character(",")).to be(false)
-  expect(encrypt.check_character("#")).to be(false)
+    expect(encrypt.assign_shift_type).to eq(expected)
   end
 end
+
+# expect(encrypt.translate_message).to eq('keder ohulw!')
+
+# xit 'can check if a message character is in the characters set' do
+#   message = "hello world!"
+#   key = 2715
+#   date = 40895
+#   encrypt = Encrypt.new
+#
+#   expect(encrypt.check_character('a')).to be(true)
+#   expect(encrypt.check_character('m')).to be(true)
+#   expect(encrypt.check_character(" ")).to be(true)
+#   expect(encrypt.check_character("!")).to be(false)
+#   expect(encrypt.check_character(",")).to be(false)
+#   expect(encrypt.check_character("#")).to be(false)
+#   end
+
 
 # xit 'can determine shift type of letter in message array' do
 #   message = "hello world!"
