@@ -2,7 +2,7 @@ require 'date'
 require_relative '../modules/keyable'
 
 class Encrypt
-  include Keyable
+  include Shiftable
   def initialize(message, key = self.generate, date = self.get_date)
     @message = message
     @key = key
