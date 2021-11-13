@@ -83,6 +83,17 @@ RSpec.describe Encrypt do
 
     expect(encrypt.assign_shift_type).to eq(expected)
   end
+
+  it 'can create hash of shifted letters according to shift type, offset, and key' do
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
+
+    expect(encrypt.shifted_letters).to be_a(Hash)
+    expect(encrypt.shifted_letters.keys).to eq(["A", "B", "C", "D"])
+    expect(encrypt.shifted_letters.length).to eq(4)
+  end
 end
 
 # expect(encrypt.translate_message).to eq('keder ohulw!')
