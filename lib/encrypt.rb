@@ -3,10 +3,11 @@ require_relative '../modules/shiftable'
 
 class Encrypt
   include Shiftable
+  attr_reader :message, :key, :date
   def initialize(message, key = self.generate, date = self.get_date)
     @message = message
     @key = key
-    @date = date
+    @date = date.to_i
     @character_set = ("a".."z").to_a << " "
     @shift_types = ["A", "B", "C", "D"]
   end
