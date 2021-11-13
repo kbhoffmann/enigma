@@ -6,7 +6,7 @@ RSpec.describe Encrypt do
 it 'exists' do
   message = "hello world!"
   key = '02715'
-  date = 40895
+  date = '40895'
   encrypt = Encrypt.new(message, key, date)
 
   expect(encrypt).to be_an_instance_of(Encrypt)
@@ -15,7 +15,7 @@ end
 it 'has a message' do
   message = "hello world!"
   key = '02715'
-  date = 40895
+  date = '40895'
   encrypt = Encrypt.new(message, key, date)
 
   expect(encrypt.message).to eq("hello world!")
@@ -24,10 +24,19 @@ end
 it 'can take a key as an optional argument' do
   message = "hello world!"
   key = '02715'
-  date = 40895
+  date = '40895'
   encrypt = Encrypt.new(message, key, date)
 
   expect(encrypt.key).to eq('02715')
+end
+
+it 'can take a date as an optional argument' do
+  message = "hello world!"
+  key = '02715'
+  date = '40895'
+  encrypt = Encrypt.new(message, key, date)
+
+  expect(encrypt.date).to eq(40895)
 end
 
 xit 'can create a character set of lower case letters and a space' do
