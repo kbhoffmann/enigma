@@ -94,6 +94,17 @@ RSpec.describe Encrypt do
     expect(encrypt.shifted_letters.keys).to eq(["A", "B", "C", "D"])
     expect(encrypt.shifted_letters.length).to eq(4)
   end
+
+  it 'can encrypt each letter grouped by type and store them in a hash' do
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
+
+    expect(encrypt.encrypted_letter).to be_a(Hash)
+    expect(encrypt.encrypted_letter.length).to eq(4)
+    expect(encrypt.encrypted_letter.values.flatten.length).to eq(message.length)
+  end
 end
 
 # expect(encrypt.translate_message).to eq('keder ohulw!')
