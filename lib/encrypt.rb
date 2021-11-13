@@ -63,9 +63,6 @@ class Encrypt
   end
 
   def encrypted_message
-    encrypted_letter.values.reduce(&:zip).join
-    # encrypted_letter.values.reduce do |letter|
-    #   letter.zip.join
-    # end
+     encrypted_letter.values.reduce(&:zip).join
   end
 end
