@@ -106,7 +106,21 @@ RSpec.describe Encrypt do
     expect(encrypt.encrypted_letter.values.flatten.length).to eq(message.length)
   end
 
-  it 'can combine the encrypted_letters into an encrypted_message' do 
+  it 'can check if a message character is in the characters set' do
+   message = "hello world!"
+   key = 2715
+   date = 40895
+   encrypt = Encrypt.new(message, key, date)
+
+   expect(encrypt.check_character('a')).to be(true)
+   expect(encrypt.check_character('m')).to be(true)
+   expect(encrypt.check_character(" ")).to be(true)
+   expect(encrypt.check_character("!")).to be(false)
+   expect(encrypt.check_character(",")).to be(false)
+   expect(encrypt.check_character("#")).to be(false)
+  end
+
+  it 'can combine the encrypted_letters into an encrypted_message' do
     message = "hello world!"
     key = '02715'
     date = '40895'
@@ -116,23 +130,6 @@ RSpec.describe Encrypt do
    expect(encrypt.encrypted_message.length).to eq(message.length)
  end
 end
-
-
-# xit 'can check if a message character is in the characters set' do
-#   message = "hello world!"
-#   key = 2715
-#   date = 40895
-#   encrypt = Encrypt.new
-#
-#   expect(encrypt.check_character('a')).to be(true)
-#   expect(encrypt.check_character('m')).to be(true)
-#   expect(encrypt.check_character(" ")).to be(true)
-#   expect(encrypt.check_character("!")).to be(false)
-#   expect(encrypt.check_character(",")).to be(false)
-#   expect(encrypt.check_character("#")).to be(false)
-#   end
-
-
 # xit 'can determine shift type of letter in message array' do
 #   message = "hello world!"
 #   key = 2715
