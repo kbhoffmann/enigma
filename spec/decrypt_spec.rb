@@ -85,7 +85,7 @@ RSpec.describe Decrypt do
     expect(decrypt.assign_shift_type).to eq(expected)
   end
 
-  xit 'can create hash of shifted letters according to shift type, offset, and key' do
+  it 'can create hash of shifted letters according to shift type, offset, and key' do
     message = "keder ohulw!"
     key = '02715'
     date = '40895'
@@ -96,7 +96,7 @@ RSpec.describe Decrypt do
     expect(decrypt.shifted_letters.length).to eq(4)
   end
 
-  xit 'can decrypt each letter grouped by type and store them in a hash' do
+  it 'can decrypt each letter grouped by type and store them in a hash' do
     message = "keder ohulw!"
     key = '02715'
     date = '40895'
@@ -107,7 +107,7 @@ RSpec.describe Decrypt do
     expect(decrypt.decrypted_letter.values.flatten.length).to eq(message.length)
   end
 
-  xit 'can check if a message character is in the characters set' do
+  it 'can check if a message character is in the characters set' do
    message = "keder ohulw!"
    key = '02715'
    date = '40895'
@@ -121,11 +121,11 @@ RSpec.describe Decrypt do
    expect(decrypt.check_character("#")).to be(false)
   end
 
-  xit 'can combine the decrypted_letters into an decrypted_message' do
+  it 'can combine the decrypted_letters into an decrypted_message' do
     message = "keder ohulw!"
     key = '02715'
     date = '40895'
-    decrypt = Encrypt.new(message, key, date)
+    decrypt = Decrypt.new(message, key, date)
 
    expect(decrypt.decrypted_message).to eq('hello world!')
    expect(decrypt.decrypted_message.length).to eq(message.length)
