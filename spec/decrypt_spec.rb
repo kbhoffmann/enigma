@@ -4,7 +4,7 @@ require './lib/decrypt'
 require 'pry'
 
 RSpec.describe Decrypt do
-  xit 'exists' do
+  it 'exists' do
     message = "keder ohulw!!"
     key = '02715'
     date = '40895'
@@ -13,7 +13,7 @@ RSpec.describe Decrypt do
     expect(decrypt).to be_an_instance_of(Decrypt)
   end
 
-  xit 'has a message' do
+  it 'has a message' do
     message = "keder ohulw!"
     key = '02715'
     date = '40895'
@@ -22,7 +22,7 @@ RSpec.describe Decrypt do
     expect(decrypt.message).to eq("keder ohulw!")
   end
 
-  xit 'can take a key as an optional argument' do
+  it 'can take a key as an optional argument' do
     message = "keder ohulw!"
     key = '02715'
     date = '40895'
@@ -31,7 +31,7 @@ RSpec.describe Decrypt do
     expect(decrypt.key).to eq('02715')
   end
 
-  xit 'can take a date as an optional argument' do
+  it 'can take a date as an optional argument' do
     message = "keder ohulw!"
     key = '02715'
     date = '40895'
@@ -40,7 +40,7 @@ RSpec.describe Decrypt do
     expect(decrypt.date).to eq('040895')
   end
 
-  xit 'has a character set of lower case letters and a space' do
+  it 'has a character set of lower case letters and a space' do
     message = "keder ohulw!"
     key = '2715'
     date = '40895'
@@ -50,7 +50,7 @@ RSpec.describe Decrypt do
     expect(decrypt.character_set.length).to eq(27)
   end
 
-  xit 'has a list of 4 shift types' do
+  it 'has a list of 4 shift types' do
     message = "keder ohulw!"
     key = '2715'
     date = '40895'
@@ -59,7 +59,7 @@ RSpec.describe Decrypt do
     expect(decrypt.shift_types).to eq(["A", "B", "C", "D"])
   end
 
-  xit 'can turn a message into an array of lower case characters' do
+  it 'can turn a message into an array of lower case characters' do
     message = "keder ohulw!"
     key = '2715'
     date = '40895'
@@ -76,13 +76,12 @@ RSpec.describe Decrypt do
     expect(decrypt.message_array(message_3)).to eq(expected_3)
   end
 
-  xit 'can assign the shift type to each character' do
+  it 'can assign the shift type to each character' do
     message = "keder ohulw!"
     key = '02715'
     date = '40895'
     decrypt = Decrypt.new(message, key, date)
-    expected = {"A"=>["h", "o", "r"], "B"=>["e", " ", "l"], "C"=>["l", "w", "d"], "D"=>["l", "o", "!"]}
-
+    expected = {"A"=>["k", "r", "u"], "B"=>["e", " ", "l"], "C"=>["d", "o", "w"], "D"=>["e", "h", "!"]}
     expect(decrypt.assign_shift_type).to eq(expected)
   end
 
