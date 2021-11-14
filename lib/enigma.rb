@@ -14,7 +14,13 @@ class Enigma
     # @date = date
   end
 
-  def encrypt(message, key = self.generate, date = self.get_date)
+  def encrypt(message, key, date)
+    if key.nil?
+      key = self.generate
+    end
+    if date.nil?
+      date = self.get_date
+    end
     encrypt = Encrypt.new(message, key, date)
       {
         :encryption => encrypt.encrypted_message,
