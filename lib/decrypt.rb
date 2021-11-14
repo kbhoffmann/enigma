@@ -1,8 +1,10 @@
 require 'date'
 require './modules/shiftable'
+require './modules/translatable'
 
 class Decrypt
   include Shiftable
+  include Translatable
   attr_reader :message, :key, :date, :character_set, :shift_types
   def initialize(message, key, date)
     @message = message.chomp
@@ -10,23 +12,6 @@ class Decrypt
     @date = date.rjust(6, "0")
     @character_set = ("a".."z").to_a << " "
     @shift_types = ["A", "B", "C", "D"]
-  end
-
-  def message_array(message)
-    message.downcase.split("")
-  end
-
-  def assign_shift_type
-     shift_hash = {}
-     message_array(@message).each_with_index do |letter, index|
-       type = index % @shift_types.count
-        (shift_hash[@shift_types[type]] ||= []) << letter
-    end
-    shift_hash
-  end
-
-  def check_character(character)
-    @character_set.include?(character)
   end
 
   def shifted_letters
@@ -54,5 +39,4 @@ class Decrypt
   def decrypted_message
      decrypted_letter.values.reduce(&:zip).join
   end
-
 end
