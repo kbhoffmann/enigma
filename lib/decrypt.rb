@@ -24,4 +24,8 @@ class Decrypt
     end
     shift_hash
   end
+
+  def check_character(character)
+    @character_set.include?(character)
+  end
 end
