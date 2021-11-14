@@ -6,8 +6,8 @@ class Encrypt
   attr_reader :message, :key, :date, :character_set, :shift_types
   def initialize(message, key = self.generate, date = self.get_date)
     @message = message
-    @key = key#.just(5, '0')??????
-    @date = date.rjust(6, "0")
+    @key = key
+    @date = date
     @character_set = ("a".."z").to_a << " "
     @shift_types = ["A", "B", "C", "D"]
   end
