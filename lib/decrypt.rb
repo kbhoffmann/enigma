@@ -32,11 +32,27 @@ class Decrypt
   def shifted_letters
     new_letters = {}
     @shift_types.each do |type|
-      # new_letters[type] = @character_set.zip(@character_set.rotate(total_shift(@date)[type])).to_h
-      #new_letters hash [key is shift type, A,B,C,or D] =>
-      new_letters[type] = @character_set.zip(@character_set.rotate(total_shift_decrypt(@date)[type] % (@character_set.length))).to_h
-                                            #rotate the character set by the total_shift(key + offset) AND shift_type
+      new_letters[type] = @character_set.zip(@character_set.rotate(-(total_shift(@date)[type] % (@character_set.length)))).to_h
     end
     new_letters
   end
+
+  def decrypted_letter
+    translated_characters = {}
+    assign_shift_type.map do |type, characters|
+      characters.map do |character|
+        if check_character(character)
+          (translated_characters[type] ||= []) << shifted_letters[type][character]
+        else
+        (translated_characters[type] ||= []) << character
+        end
+      end
+    end
+    translated_characters
+  end
+
+  def decrypted_message
+     decrypted_letter.values.reduce(&:zip).join
+  end
+
 end
