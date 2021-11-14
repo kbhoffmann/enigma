@@ -1,6 +1,6 @@
 require './lib/encrypt'
 require './lib/decrypt'
-require_relative '../modules/shiftable'
+require './modules/shiftable'
 require 'date'
 require 'pry'
 
