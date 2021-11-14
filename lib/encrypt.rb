@@ -4,7 +4,7 @@ require_relative '../modules/shiftable'
 class Encrypt
   include Shiftable
   attr_reader :message, :key, :date, :character_set, :shift_types
-  def initialize(message, key = self.generate, date = self.get_date)
+  def initialize(message, key, date)
     @message = message.chomp
     @key = key
     @date = date.rjust(6, "0")
