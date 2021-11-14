@@ -43,15 +43,9 @@ module Shiftable
      }
   end
 
-  def total_shift_encrypt(date)
+  def total_shift(date)
     create_keys_hash.merge!(offset_hash(date)) do |type, key, offset|
       key + offset
-    end
-  end
-
-  def total_shift_decrypt(date)
-    create_keys_hash.merge!(offset_hash(date)) do |type, key, offset|
-      key - offset
     end
   end
 end
