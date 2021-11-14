@@ -5,7 +5,7 @@ module Shiftable
   end
 
   def generate
-    5.times.map {rand(0..10)}.join
+    5.times.map {rand(0..9)}.join
   end
   #=> [0, 4, 0, 8, 1]
 
