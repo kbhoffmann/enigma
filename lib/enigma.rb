@@ -6,7 +6,7 @@ require 'pry'
 class Enigma
   include Shiftable
 
-  attr_reader #:key, :date #:message, :cipher_text,
+  # attr_reader #:key, :date #:message, :cipher_text,
   def initialize
     # @message = message
     # @cipher_text = cipher_text
@@ -24,6 +24,21 @@ class Enigma
     encrypt = Encrypt.new(message, key, date)
       {
         :encryption => encrypt.encrypted_message,
+        :key => key,
+        :date => date
+      }
+  end
+
+  def decrypt(message, key, date)
+    if key.nil?
+      key = self.generate
+    end
+    if date.nil?
+      date = self.get_date
+    end
+    decrypt = Decrypt.new(message, key, date)
+      {
+        :decryption => decrypt.decrypted_message,
         :key => key,
         :date => date
       }
