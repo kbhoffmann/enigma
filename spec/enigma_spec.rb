@@ -13,12 +13,24 @@ RSpec.describe Enigma do
   it 'can encrypt a message with a given key and date' do
     enigma = Enigma.new
 
-    encryption = {
+    encrypted = {
               :encryption => 'keder ohulw',
               :key => '02715',
               :date => '040895'
                }
-    expect(enigma.encrypt('hello world','02715','040895')).to eq(encryption)
+    expect(enigma.encrypt('hello world','02715','040895')).to eq(encrypted)
+  end
+
+  it 'can encrypt a message with a given key and no date given' do
+    enigma = Enigma.new
+
+    encrypted = {
+              :encryption => 'pkfawfqdzry',
+              :key => '02715',
+              :date => Date.today.strftime("%d%m%y")
+              }
+
+    expect(enigma.encrypt('hello world','02715', date = nil)).to eq(encrypted)
   end
 
   it 'can decrypt a message with given key and date' do
@@ -46,20 +58,7 @@ RSpec.describe Enigma do
   end
 end
 
-# xit 'can encrypt a message with a given key and no date given' do
-#   enigma = Enigma.new
-#
-#   encryption = {
-#             :encryption => 'pkfawfqdzry',
-#             #the encrypted message
-#             :key => '02715',
-#             #the key used for encryption as a string
-#             :date => Date.today.strftime("%d%m%y")
-#             #the date used for encryption as a string
-#             }
-#   date is an optional arg, if date is not included, today's date is used.
-#   expect(enigma.encrypt('hello world','02715')).to eq(encryption)
-# end
+
 
 #How do you test for randomness?
 # xit 'can encrypt a message with NO key or date given' do
