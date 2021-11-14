@@ -22,11 +22,11 @@ class Enigma
       }
   end
 
-  def decrypt(message, key, date)
+  def decrypt(ciphertext, key, date)
     if date.nil?
       date = self.get_date
     end
-    decrypt = Decrypt.new(message, key, date)
+    decrypt = Decrypt.new(ciphertext, key, date)
       {
         :decryption => decrypt.decrypted_message,
         :key => key,
