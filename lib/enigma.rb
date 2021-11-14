@@ -23,9 +23,6 @@ class Enigma
   end
 
   def decrypt(message, key, date)
-    if key.nil?
-      key = self.generate
-    end
     if date.nil?
       date = self.get_date
     end
