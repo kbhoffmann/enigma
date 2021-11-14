@@ -12,4 +12,8 @@ class Decrypt
     @shift_types = ["A", "B", "C", "D"]
   end
 
+  def message_array(message)
+    message.downcase.split("")
+  end
+  
 end
