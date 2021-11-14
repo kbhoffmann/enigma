@@ -13,6 +13,36 @@ RSpec.describe Encrypt do
     expect(encrypt).to be_an_instance_of(Encrypt)
   end
 
+  it 'can get the date' do
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
+    expected = Date.today.strftime("%d%m%y")
+
+    expect(encrypt.get_date).to eq(expected)
+  end
+
+  it 'can generate a random number for the key' do
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
+
+    expect(encrypt.generate).to be_a(String)
+    expect(encrypt.generate.length).to eq(5)
+  end
+
+  it 'can separate a random number into four separate sets of numbers' do
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
+
+    expect(encrypt.separate_sets).to be_an(Array)
+    expect(encrypt.separate_sets.length).to eq(4)
+  end
+
   it 'has a message' do
     message = "hello world!"
     key = '02715'
@@ -86,6 +116,16 @@ RSpec.describe Encrypt do
     expect(encrypt.assign_shift_type).to eq(expected)
   end
 
+  it 'can calculate the total shift per shift type' do
+    message = "hello world!"
+    key = '02715'
+    date = '40895'
+    encrypt = Encrypt.new(message, key, date)
+
+    expect(encrypt.total_shift(date)).to be_a(Hash)
+    expect(encrypt.total_shift(date).length).to eq(4)
+  end
+
   it 'can create hash of shifted letters according to shift type, offset, and key' do
     message = "hello world!"
     key = '02715'
@@ -131,4 +171,4 @@ RSpec.describe Encrypt do
    expect(encrypt.encrypted_message).to eq('keder ohulw!')
    expect(encrypt.encrypted_message.length).to eq(message.length)
  end
-end 
+end
