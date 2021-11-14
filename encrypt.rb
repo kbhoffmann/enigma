@@ -5,7 +5,7 @@ message = message_file.read #
 message_file.close #
 key = ARGV[2] #
 date = ARGV[3] #
-encrypting = Engima.new #
+encrypting = Enigma.new #
 encryption = encrypting.encrypt(message, key, date)
 
 encrypt_file = File.open(ARGV[1], "w") #
