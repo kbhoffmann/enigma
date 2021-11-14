@@ -7,7 +7,7 @@ class Encrypt
   def initialize(message, key = self.generate, date = self.get_date)
     @message = message
     @key = key
-    @date = date.to_i
+    @date = date
     @character_set = ("a".."z").to_a << " "
     @shift_types = ["A", "B", "C", "D"]
   end
