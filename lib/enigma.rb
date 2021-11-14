@@ -6,10 +6,10 @@ require 'pry'
 class Enigma
   include Shiftable
 
-  attr_reader :message, :cipher_text, :key, :date
+  attr_reader :key, :date #:message, :cipher_text, 
   def initialize
-    @message = message
-    @cipher_text = cipher_text
+    # @message = message
+    # @cipher_text = cipher_text
     @key = key
     @date = date
   end
