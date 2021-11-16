@@ -19,6 +19,7 @@ module Shiftable
 
   def create_keys_hash
     {
+
       'A' => @key[0..1].to_i,
       'B' => @key[1..2].to_i,
       'C' => @key[2..3].to_i,
