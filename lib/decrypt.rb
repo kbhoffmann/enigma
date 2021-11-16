@@ -6,10 +6,10 @@ class Decrypt
   include Shiftable
   include Translatable
   attr_reader :message, :key, :date, :character_set, :shift_types
-  def initialize(message, key, date)
+  def initialize(message, key, date = self.get_date)
     @message = message.chomp
     @key = key
-    @date = date.rjust(6, "0")
+    @date = date
     @character_set = ("a".."z").to_a << " "
     @shift_types = ["A", "B", "C", "D"]
   end
