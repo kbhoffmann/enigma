@@ -7,7 +7,7 @@ RSpec.describe Decrypt do
   it 'exists' do
     message = "keder ohulw!!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     decrypt = Decrypt.new(message, key, date)
 
     expect(decrypt).to be_an_instance_of(Decrypt)
@@ -16,7 +16,7 @@ RSpec.describe Decrypt do
   it 'has a message' do
     message = "keder ohulw!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     decrypt = Decrypt.new(message, key, date)
 
     expect(decrypt.message).to eq("keder ohulw!")
@@ -25,7 +25,7 @@ RSpec.describe Decrypt do
   it 'can take a key as an optional argument' do
     message = "keder ohulw!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     decrypt = Decrypt.new(message, key, date)
 
     expect(decrypt.key).to eq('02715')
@@ -34,7 +34,7 @@ RSpec.describe Decrypt do
   it 'can take a date as an optional argument' do
     message = "keder ohulw!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     decrypt = Decrypt.new(message, key, date)
 
     expect(decrypt.date).to eq('040895')
@@ -43,7 +43,7 @@ RSpec.describe Decrypt do
   it 'has a character set of lower case letters and a space' do
     message = "keder ohulw!"
     key = '2715'
-    date = '40895'
+    date = '040895'
     decrypt = Decrypt.new(message, key, date)
 
     expect(decrypt.character_set).to be_an(Array)
@@ -53,7 +53,7 @@ RSpec.describe Decrypt do
   it 'has a list of 4 shift types' do
     message = "keder ohulw!"
     key = '2715'
-    date = '40895'
+    date = '040895'
     decrypt = Decrypt.new(message, key, date)
 
     expect(decrypt.shift_types).to eq(["A", "B", "C", "D"])
@@ -62,7 +62,7 @@ RSpec.describe Decrypt do
   it 'can turn a message into an array of lower case characters' do
     message = "keder ohulw!"
     key = '2715'
-    date = '40895'
+    date = '040895'
     decrypt = Decrypt.new(message, key, date)
     message_1 = 'Hello*World'
     message_2 = 'Oh no!'
@@ -79,7 +79,7 @@ RSpec.describe Decrypt do
   it 'can assign the shift type to each character' do
     message = "keder ohulw!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     decrypt = Decrypt.new(message, key, date)
     expected = {"A"=>["k", "r", "u"], "B"=>["e", " ", "l"], "C"=>["d", "o", "w"], "D"=>["e", "h", "!"]}
     expect(decrypt.assign_shift_type).to eq(expected)
@@ -88,7 +88,7 @@ RSpec.describe Decrypt do
   it 'can create hash of shifted letters according to shift type, offset, and key' do
     message = "keder ohulw!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     decrypt = Decrypt.new(message, key, date)
 
     expect(decrypt.shifted_letters).to be_a(Hash)
@@ -99,7 +99,7 @@ RSpec.describe Decrypt do
   it 'can decrypt each letter grouped by type and store them in a hash' do
     message = "keder ohulw!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     decrypt = Decrypt.new(message, key, date)
 
     expect(decrypt.decrypted_letter).to be_a(Hash)
@@ -110,7 +110,7 @@ RSpec.describe Decrypt do
   it 'can check if a message character is in the characters set' do
    message = "keder ohulw!"
    key = '02715'
-   date = '40895'
+   date = '040895'
    decrypt = Decrypt.new(message, key, date)
 
    expect(decrypt.check_character('a')).to be(true)
@@ -124,7 +124,7 @@ RSpec.describe Decrypt do
   it 'can combine the decrypted_letters into an decrypted_message' do
     message = "keder ohulw!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     decrypt = Decrypt.new(message, key, date)
 
    expect(decrypt.decrypted_message).to eq('hello world!')
