@@ -7,7 +7,7 @@ RSpec.describe Encrypt do
   it 'exists' do
     message = "hello world!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     encrypt = Encrypt.new(message, key, date)
 
     expect(encrypt).to be_an_instance_of(Encrypt)
@@ -16,7 +16,7 @@ RSpec.describe Encrypt do
   it 'can get the date' do
     message = "hello world!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     encrypt = Encrypt.new(message, key, date)
     expected = Date.today.strftime("%d%m%y")
 
@@ -26,7 +26,7 @@ RSpec.describe Encrypt do
   it 'can generate a random number for the key' do
     message = "hello world!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     encrypt = Encrypt.new(message, key, date)
 
     expect(encrypt.generate).to be_a(String)
@@ -36,7 +36,7 @@ RSpec.describe Encrypt do
   it 'can separate a random number into four separate sets of numbers' do
     message = "hello world!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     encrypt = Encrypt.new(message, key, date)
 
     expect(encrypt.separate_sets).to be_an(Array)
@@ -46,7 +46,7 @@ RSpec.describe Encrypt do
   it 'has a message' do
     message = "hello world!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     encrypt = Encrypt.new(message, key, date)
 
     expect(encrypt.message).to eq("hello world!")
@@ -55,7 +55,7 @@ RSpec.describe Encrypt do
   it 'can take a key as an optional argument' do
     message = "hello world!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     encrypt = Encrypt.new(message, key, date)
 
     expect(encrypt.key).to eq('02715')
@@ -64,7 +64,7 @@ RSpec.describe Encrypt do
   it 'can take a date as an optional argument' do
     message = "hello world!"
     key = '02715'
-    date = '40895'
+    date = '040895'
     encrypt = Encrypt.new(message, key, date)
 
     expect(encrypt.date).to eq('040895')
