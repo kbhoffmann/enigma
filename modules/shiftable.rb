@@ -7,7 +7,6 @@ module Shiftable
   def generate
     5.times.map {rand(0..9)}.join
   end
-  #=> [0, 4, 0, 8, 1]
 
   def separate_sets
       keys = []
