@@ -3,10 +3,9 @@ require './lib/enigma'
 encrypted_file = File.open(ARGV[0], "r")
 ciphertext = encrypted_file.read
 encrypted_file.close
-key = ARGV[2]
-date = ARGV[3]
+# key = ARGV[2], date = ARGV[3]
 decrypting = Enigma.new
-decryption = decrypting.decrypt(ciphertext, key, date)
+decryption = decrypting.decrypt(ciphertext, ARGV[2], date = ARGV[3] ||= Date.today.strftime("%d%m%y"))
 
 decrypt_file = File.open(ARGV[1], "w")
 decrypt_file.write(decryption[:decryption])
